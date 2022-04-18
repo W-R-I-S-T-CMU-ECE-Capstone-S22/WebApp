@@ -1,0 +1,11 @@
+body {
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+  }
+
+#id_test{
+  width: 500px; 
+  height: 500px;
+}

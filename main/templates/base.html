@@ -1,0 +1,40 @@
+<!doctype html>
+
+<html lang="en" xml:lang="en">
+<head>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'main/style/main.css' %}">
+    <title>W.R.I.S.T</title>
+   
+    <div id="header_container">
+        {% block load_javascript %}
+        {% endblock %}
+    </div>
+    
+</head>
+
+<body>
+    <div id="test">
+        <div id="id_left_sidebar_container">
+            <div id="id_title_container">
+                <p id="id_home_title">W.R.I.S.T.</p>
+                <p id="id_home_subtitle">Wireless Reality Integrated Sensing Tool</p>
+            </div>
+            <ul>
+                <li id="id_home_container" class='{% if page == "home" %}class_selected_icon_continer{% endif %}' href="{% url 'login' %}">
+                    <img id="id_home_icon" class='{% if page == "home" %}selected_icon {% else %}class_icon_image{% endif %}' src="{% static "main/images/home.png" %}"></img>
+                </li>
+                <li id="id_wearable_status_container">
+                    <img class='{% if page == "battery" %}selected_icon {% else %}class_icon_image{% endif %}' src="{% static "main/images/status.png" %}"></img>
+                </li>
+                <li id="id_unity_button_container">
+                    <img class='{% if page == "unity" %}selected_icon {% else %}class_icon_image{% endif %}' src="{% static "main/images/hologram.png" %}"></img>
+                </li>
+            </ul>
+        </div>
+    </div>
+    {% block content %}
+    {% endblock %} 
+</body>
+
+</html>

@@ -1,0 +1,32 @@
+<!doctype html>
+
+<html lang="en" xml:lang="en">
+<head>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'main/style/main.css' %}">
+    <title>W.R.I.S.T</title>
+    
+    <meta charset="utf-8">
+</head>
+
+<body>
+    <div id="id_login_container">
+        <div id="id_login_box_container">
+            <div id="login">
+                <div id="login_text_container">
+                    <span id="id_name_of_page">Login</span>
+                </div>
+                <form method="POST" id="form_container">
+                    {% csrf_token %}
+                    <table id="id_login_form"> 
+                        {{form}}
+                    </table> 
+                    <button id="id_login_button" type="submit">Submit</button>   
+                </form>
+            </div>
+            <a id="id_register_link" href="/register">Register</a> 
+        </div>
+    </div>
+</body>
+
+</html>

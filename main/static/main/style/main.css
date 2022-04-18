@@ -1,0 +1,306 @@
+/* GLOBAL */
+input{
+    padding: 5px 10px;
+    width: 200px;
+}
+
+label{
+    display:inline-block;
+    width: 140px; 
+    text-align: left;
+}
+
+table {
+    border-collapse: separate;
+    border-spacing: 0 15px;
+}
+
+body,html {
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #F7FFF7;
+}
+
+ul{
+    list-style-type: none;
+    padding: 0px;
+}
+
+/* CLASS DEFINITIONS */
+.card{
+    width: 410px; 
+    padding: 10px 20px;
+    height: fit-content;
+    background-color: white;
+    box-shadow: 10px 10px 5px #D3D3D3;
+    border-radius: 15px;
+}
+
+.class_icon_image{
+    width: 50px;
+    height: 50px;
+}
+img.class_icon_image {
+    -webkit-filter: grayscale(100%);
+    -moz-filter: grayscale(100%);
+    filter: grayscale(100%);
+    transition: all 0.5s ease;
+  }
+ 
+img.class_icon_image:hover {
+-webkit-filter: grayscale(0%);
+-moz-filter: grayscale(0%);
+filter: grayscale(0%);
+}
+
+img.selected_icon{
+    width: 50px;
+    height: 50px;
+    -webkit-filter: grayscale(0%);
+    -moz-filter: grayscale(0%);
+    filter: grayscale(0%);
+}
+
+.class_selected_icon_continer{
+    background-color: white;
+}
+
+.button-1 {
+    background-color: #EA4C89;
+    border-radius: 8px;
+    border-style: none;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline-block;
+    font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    height: 40px;
+    line-height: 20px;
+    list-style: none;
+    margin: 0;
+    outline: none;
+    padding: 10px 16px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    transition: color 100ms;
+    vertical-align: baseline;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
+
+.button-1:hover,
+.button-1:focus {
+    background-color: #F082AC;
+}
+
+/* BASE.HTML */
+#id_header_container{
+    width: 100vw; 
+    height: 100px; 
+}
+/* LOGIN CSS */
+#id_login_container{
+    width: 100vw;
+    height: 100vh;
+    background-color: #FDFD96;
+    display: flex;
+    justify-content: center;
+}
+#id_login_box_container{
+    width: fit-content;
+    height: fit-content;
+    padding: 30px;
+    margin-top: 150px;
+    align-content: center;
+    background-color: white;
+    box-shadow: 5px 5px #D3D3D3;
+    display: flex;
+    justify-content: center;
+}
+
+#login{
+    display: inline-block;
+    margin-right: auto; 
+    margin-left: auto; 
+    margin-top: auto;
+    margin-bottom: auto; 
+    height: fit-content;
+    padding: 30px 70px;
+    border: dotted;
+    border-width: 2px;
+    border-color: grey;
+}
+
+#login_text_container{
+    text-align: center;
+}
+
+#id_login_button{
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px; 
+    border-radius: 5px; 
+    margin-top: 2px;
+}
+
+#id_name_of_page{
+    font-size: 30px; 
+    font-weight: bold;
+}
+#id_username{
+    padding: 5px 10px;
+}
+#id_password{
+    padding: 5px 10px;
+}
+#id_register_link{
+    width: fit-content; 
+    height: fit-content;
+    position: absolute;
+    margin-top: 243px;
+}
+
+/* REGISTER PAGE */
+#id_register_container{
+    width: 100vw;
+    height: 100vh;
+    background-color: #FDFD96;
+    display: flex;
+    justify-content: center;
+}
+#id_register_box_container{
+    width: fit-content;
+    height: fit-content;
+    padding: 30px;
+    margin-top: 150px;
+    align-content: center;
+    background-color: white;
+    box-shadow: 5px 5px #D3D3D3;
+    display: flex;
+    justify-content: center;
+}
+
+#id_register{
+    display: inline-block;
+    margin-right: auto; 
+    margin-left: auto; 
+    margin-top: auto;
+    margin-bottom: auto; 
+    height: fit-content;
+    padding: 30px 70px;
+    border: dotted;
+    border-width: 2px;
+    border-color: grey;
+}
+
+#id_register_text_container{
+    text-align: center;
+}
+
+#id_register_button{
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px; 
+    border-radius: 5px; 
+    margin-top: 2px;
+}
+
+#id_login_link{
+    width: fit-content; 
+    height: fit-content;
+    position: absolute;
+    margin-top: 464px;
+}
+
+/* HOME PAGE */
+#id_left_sidebar_container{
+    height: 95vh; 
+    width: 200px;
+    background-color: #ff8517; 
+    display: inline-block;
+    margin-top: 20px;
+    /* vertical-align: top; */
+    margin-top: 20px;
+    margin-left: auto; 
+    margin-right: auto; 
+    position: relative; 
+    border-radius: 20px;
+    border-width: 2px;
+    overflow: hidden;
+}
+#id_home_title{
+    font-size: 30px; 
+    margin-left: auto; 
+    margin-right: auto;
+    width: fit-content; 
+    height: fit-content; 
+}
+#id_home_subtitle{
+    font-size: 15px; 
+    margin-left: auto; 
+    margin-right: auto;
+    width: fit-content; 
+    height: fit-content;
+}
+
+#id_home_container{
+    margin-left: auto; 
+    margin-right: auto;
+    width: fit-content;
+    height: fit-content; 
+    padding: 20px 20px;
+    border-radius: 50px;
+}
+
+#id_wearable_status_container{
+    margin-left: auto; 
+    margin-right: auto;
+    width: fit-content;
+    height: fit-content; 
+    padding: 20px 0px;
+    margin-top: 30px;
+}
+
+#id_model_container{
+    width: fit-content; 
+    height: fit-content;
+    display:inline-block;
+    vertical-align: top;
+    margin-left: 100px; 
+    margin-top: 20px;
+}
+
+#id_unity_button_container{
+    margin-left: auto; 
+    margin-right: auto;
+    padding: 20px 0px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px; 
+
+}
+
+#test{
+    display: inline-block; 
+    width: fit-content;
+    padding: 10px 20px; 
+    height: 100vh; 
+    background-color: #1A535C;
+    text-align: center;
+}
+
+#id_title_container{
+    width: fit-content; 
+    height: fit-content; 
+    padding: 20px 0px; 
+}
+

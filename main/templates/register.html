@@ -1,0 +1,37 @@
+<!doctype html>
+
+<html lang="en" xml:lang="en">
+<head>
+    
+    <link rel="stylesheet" type="text/css" href="{% static 'main/style/main.css' %}">
+    <title>W.R.I.S.T</title>
+    {% load static %}
+    <meta charset="utf-8">
+</head>
+
+<body>
+    <div id="id_register_container">
+        <div id="id_register_box_container">
+            <div id="id_register">
+                <div id="id_register_text_container">
+                    <span id="id_name_of_page">Register</span>
+                </div>
+                <form method="POST" id="id_register_form">
+                    {% csrf_token %}
+                    <table>
+                        <td>
+                            {{form}}
+                        </td>
+                        <td class="error">
+                            {% for error in field.errors %} {{error}} {% endfor %}
+                        </td>
+                    </table>      
+                    <button id="id_register_button" type="submit">Register</button>   
+                </form>
+            </div>
+            <a id="id_login_link" href="/">Login</a> 
+        </div> 
+    </div>
+</body>
+
+</html>
