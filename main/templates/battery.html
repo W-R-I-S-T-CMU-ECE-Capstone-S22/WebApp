@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block header_content %}
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+{% endblock %}
+
+{% block content %}
+<canvas id="myChart" width="1000" height="900"></canvas>
+<script>
+var ctx = document.getElementById("myChart").getContext('2d');
+
+// Define the data 
+var data = [{
+
+            }]; // Add data values to array
+// End Defining data
+var options = {
+    responsive: false, // Instruct chart js to respond nicely.
+    maintainAspectRatio: false, // Add to prevent default behaviour of full-width/height 
+};
+
+// End Defining data
+var myChart = new Chart(ctx, {
+    type: 'scatter',
+    data: {
+        datasets: [{
+                label: 'Population', // Name the series
+                data: data, // Specify the data values array
+          borderColor: '#2196f3', // Add custom color border            
+          backgroundColor: '#2196f3', // Add custom color background (Points and Fill)
+            }]
+    },
+    options: options
+});
+
+</script>
+
+
+{% endblock %}

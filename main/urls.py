@@ -20,5 +20,6 @@ urlpatterns = [
     path('', views.login_action, name='login'),
     path('register', views.register_action, name='register'),
     path('home', views.home_action, name='home'),
+    path('battery', views.battery_action, name='battery'),
     path('unity', views.unity_action, name='unity'),
 ]

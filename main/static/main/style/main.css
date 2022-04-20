@@ -65,6 +65,12 @@ img.selected_icon{
 
 .class_selected_icon_continer{
     background-color: white;
+    border:2px soild #eee;
+
+    margin: 15px 15px;
+    -webkit-box-shadow: 2px 3px 5px black;
+   -moz-box-shadow: 2px 3px 5px black;
+   box-shadow: 2px 3px 5px black;
 }
 
 .button-1 {
@@ -98,7 +104,15 @@ img.selected_icon{
 .button-1:focus {
     background-color: #F082AC;
 }
-
+/* UNITY FUNCTIONS */
+#unity-container{
+    left: 800px!important; 
+}
+#myChart {
+    position: absolute;
+    left: 1500px;
+    top: 20%; 
+}
 /* BASE.HTML */
 #id_header_container{
     width: 100vw; 
@@ -224,7 +238,7 @@ img.selected_icon{
 #id_left_sidebar_container{
     height: 95vh; 
     width: 200px;
-    background-color: #ff8517; 
+    background-color: #e85a4f; 
     display: inline-block;
     margin-top: 20px;
     /* vertical-align: top; */
@@ -265,8 +279,11 @@ img.selected_icon{
     margin-right: auto;
     width: fit-content;
     height: fit-content; 
-    padding: 20px 0px;
+    padding: 20px 20px;
     margin-top: 30px;
+    border-radius: 50px;
+    width: fit-content; 
+    height: fit-content; 
 }
 
 #id_model_container{
@@ -281,11 +298,14 @@ img.selected_icon{
 #id_unity_button_container{
     margin-left: auto; 
     margin-right: auto;
-    padding: 20px 0px; 
+    padding: 20px 20px; 
     display: flex;
     justify-content: center;
     align-items: center;
     margin-top: 30px; 
+    border-radius: 50px;
+    width: fit-content; 
+    height: fit-content; 
 
 }
 
@@ -294,7 +314,6 @@ img.selected_icon{
     width: fit-content;
     padding: 10px 20px; 
     height: 100vh; 
-    background-color: #1A535C;
     text-align: center;
 }
 

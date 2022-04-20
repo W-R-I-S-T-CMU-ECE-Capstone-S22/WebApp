@@ -77,4 +77,8 @@ def register_action(request):
         return redirect(reverse('login'))
 
 def unity_action(request):
-    return render(request, 'unity.html', {})
+    return render(request, 'unity.html', {"page": "unity"})
+
+
+def battery_action(request):
+    return render(request, 'battery.html', {"page": "battery"})

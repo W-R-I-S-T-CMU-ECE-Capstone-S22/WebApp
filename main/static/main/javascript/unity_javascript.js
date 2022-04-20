@@ -1,3 +1,40 @@
+// Define the data 
+var data_chart = [{
+
+}]; // Add data values to array
+
+var ctx = document.getElementById("myChart").getContext('2d');
+
+// End Defining data
+var options = {
+    responsive: false, // Instruct chart js to respond nicely.
+    maintainAspectRatio: false, // Add to prevent default behaviour of full-width/height 
+    scales: {
+      x: {
+        suggestedMin: 0,
+        suggestedMax: 50
+      },
+      y: {
+        suggestedMin: 0,
+        suggestedMax: 175
+      }
+    }
+};
+
+// End Defining data
+var myChart = new Chart(ctx, {
+    type: 'scatter',
+    data: {
+        datasets: [{
+                label: 'Finger Location', // Name the series
+                data: data_chart, // Specify the data values array
+          borderColor: '#2196f3', // Add custom color border            
+          backgroundColor: '#2196f3', // Add custom color background (Points and Fill)
+            }]
+    },
+    options: options
+});
+
 // MQTT protocol to receive data 
 console.log('Setup...');
 
@@ -33,13 +70,24 @@ function onConnectionLost(responseObject) {
 function onMessageArrived(message) {
     var payload = message.payloadString;
     payload = JSON.parse(payload);
-
+    var chart_data = myChart.data.datasets[0].data
     // parsing data from the mqtt data and making appropriate calls to unity functions 
     if (payload.x_coord.length != 0) {
+      // for visualization: 
+      
+      if (chart_data.length > 7){ 
+        chart_data.shift()
+      }
+      chart_data.push({x:parseFloat(payload.y_coord[0]), y:parseFloat(payload.x_coord[0])});
+      myChart.update();
+      console.log(chart_data)
       var data = `gesture:${payload["gesture"]},x_coord:${payload.x_coord[0]},y_coord:${payload.y_coord[0]},timestamp:${payload.timestamp}`
       // console.log(data);
-      if (payload.gesture == "pinch") {
-        unity_zoom_in();
+      if (payload.gesture == "two") {
+        console.log("two called")
+        var data = `gesture:pinch,x_coord:${payload.x_coord[0]},y_coord:${payload.y_coord[0]},timestamp:${payload.timestamp}`
+        unity_rotate(data);
+        
       } else if (payload.gesture == "swipe") {
         if (parseFloat(payload.x_coord[0]) > 0) {
           unity_rotate(data);
@@ -47,6 +95,8 @@ function onMessageArrived(message) {
       }   
     } else {
       if (payload.gesture == "none") {
+        chart_data = []
+        myChart.update();
         var data = `gesture:${payload["gesture"]}`
         console.log("none");
         unity_rotate(data);
@@ -156,3 +206,4 @@ script.onload = () => {
   });
 };
 document.body.appendChild(script);
+
