@@ -72,6 +72,7 @@ function onMessageArrived(message) {
     payload = JSON.parse(payload);
     var chart_data = myChart.data.datasets[0].data
     // parsing data from the mqtt data and making appropriate calls to unity functions 
+    console.log(payload)
     if (payload.x_coord.length != 0) {
       // for visualization: 
       
