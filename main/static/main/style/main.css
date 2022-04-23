@@ -118,6 +118,17 @@ img.selected_icon{
     width: 100vw;
     height: 100px;
 }
+
+#container{
+    display: flex; 
+    flex-direction: row; 
+    flex-wrap: nowrap; 
+    background-color: lightblue;
+}
+#container > div {
+    width: fit-content; 
+    height: fit-content; 
+}
 /* LOGIN CSS */
 #id_login_container{
     width: 100vw;
@@ -236,13 +247,11 @@ img.selected_icon{
 
 /* HOME PAGE */
 #id_left_sidebar_container{
-    height: 95vh;
+    height: 100vh;
     width: 200px;
     background-color: #e85a4f;
     display: inline-block;
-    margin-top: 20px;
     /* vertical-align: top; */
-    margin-top: 20px;
     margin-left: auto;
     margin-right: auto;
     position: relative;
@@ -291,8 +300,10 @@ img.selected_icon{
     height: fit-content;
     display:inline-block;
     vertical-align: top;
-    margin-left: 100px;
-    margin-top: 20px;
+    margin-top: auto;
+    margin-bottom: auto;
+    overflow: hidden;
+    border-radius: 800px;
 }
 
 #id_unity_button_container{
@@ -317,16 +328,16 @@ img.selected_icon{
     text-align: center;
 }
 
-#right-container{
-    display: inline-block;
-    width: fit-content;
-    height: 100vh;
-    text-align: center;
-}
-
 #id_title_container{
     width: fit-content;
     height: fit-content;
     padding: 20px 0px;
 }
 
+#id_middle_home_container{
+    display: flex; 
+    flex-direction: column;
+    margin-top: auto; 
+    margin-bottom:auto;  
+    margin-left: 100px; 
+}

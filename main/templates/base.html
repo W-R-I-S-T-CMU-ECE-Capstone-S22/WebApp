@@ -5,16 +5,16 @@
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'main/style/main.css' %}">
     <title>W.R.I.S.T</title>
-   {% block header_content %}
-   {% endblock %}
-    <div id="header_container">
-        {% block load_javascript %}
-        {% endblock %}
-    </div>
+    {% block header_content %}
+    {% endblock %}
+   
+    {% block load_javascript %}
+    {% endblock %}
+
 
 </head>
 
-<body>
+<body id="container">
     <div id="left-container">
         <div id="id_left_sidebar_container">
             <div id="id_title_container">
@@ -54,10 +54,10 @@
 
 
     </script>
-    <div id="right-container">
-        {% block content %}
-        {% endblock %}
-    </div>
+    
+    {% block content %}
+    {% endblock %}
+
 </body>
 
 </html>
