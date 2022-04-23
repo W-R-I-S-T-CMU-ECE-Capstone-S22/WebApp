@@ -1,4 +1,4 @@
-// Define the data 
+// Define the data
 var data_chart = [{
 
 }]; // Add data values to array
@@ -8,7 +8,7 @@ var ctx = document.getElementById("myChart").getContext('2d');
 // End Defining data
 var options = {
     responsive: false, // Instruct chart js to respond nicely.
-    maintainAspectRatio: false, // Add to prevent default behaviour of full-width/height 
+    maintainAspectRatio: false, // Add to prevent default behaviour of full-width/height
     scales: {
       x: {
         suggestedMin: 0,
@@ -28,14 +28,14 @@ var myChart = new Chart(ctx, {
         datasets: [{
                 label: 'Finger Location', // Name the series
                 data: data_chart, // Specify the data values array
-          borderColor: '#2196f3', // Add custom color border            
+          borderColor: '#2196f3', // Add custom color border
           backgroundColor: '#2196f3', // Add custom color background (Points and Fill)
             }]
     },
     options: options
 });
 
-// MQTT protocol to receive data 
+// MQTT protocol to receive data
 console.log('Setup...');
 
 const MQTT_HOST = "mqtt.eclipseprojects.io/mqtt";
@@ -71,12 +71,13 @@ function onMessageArrived(message) {
     var payload = message.payloadString;
     payload = JSON.parse(payload);
     var chart_data = myChart.data.datasets[0].data
+
     // parsing data from the mqtt data and making appropriate calls to unity functions 
     console.log(payload)
     if (payload.x_coord.length != 0) {
-      // for visualization: 
-      
-      if (chart_data.length > 7){ 
+      // for visualization:
+
+      if (chart_data.length > 7){
         chart_data.shift()
       }
       chart_data.push({x:parseFloat(payload.y_coord[0]), y:parseFloat(payload.x_coord[0])});
@@ -88,12 +89,12 @@ function onMessageArrived(message) {
         console.log("two called")
         var data = `gesture:pinch,x_coord:${payload.x_coord[0]},y_coord:${payload.y_coord[0]},timestamp:${payload.timestamp}`
         unity_rotate(data);
-        
+
       } else if (payload.gesture == "swipe") {
         if (parseFloat(payload.x_coord[0]) > 0) {
           unity_rotate(data);
-        } 
-      }   
+        }
+      }
     } else {
       if (payload.gesture == "none") {
         chart_data = []
@@ -102,7 +103,7 @@ function onMessageArrived(message) {
         console.log("none");
         unity_rotate(data);
       }
-    }   
+    }
 }
 
 /***** UNITY FUNCTIONS (communication calls to Unity functions from MQTT protocol data) ******/
@@ -115,7 +116,7 @@ function unity_rotate(data) {
 function unity_zoom_in() {
   if (unity_instance != null) {
     console.log("Unity zoom in called");
-    unity_instance.SendMessage('chicken-rig', "ZoomInObject"); 
+    unity_instance.SendMessage('chicken-rig', "ZoomInObject");
   }
 }
 
@@ -126,14 +127,14 @@ var loadingBar = document.querySelector("#unity-loading-bar");
 var progressBarFull = document.querySelector("#unity-progress-bar-full");
 var fullscreenButton = document.querySelector("#unity-fullscreen-button");
 var warningBanner = document.querySelector("#unity-warning");
-var unity_instance = null; 
-var rotate = 0; 
+var unity_instance = null;
+var rotate = 0;
 
 window.addEventListener('mousemove', function(e) {
   if (rotate == 1) {
     console.log(e);
   }
-}); 
+});
 
 // Shows a temporary message banner/ribbon for a few seconds, or
 // a permanent error message on top of the canvas if type=='error'.

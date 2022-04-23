@@ -4,39 +4,60 @@
 {% block header_content %}
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.0.1/mqttws31.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
 {% endblock %}
 
 {% block content %}
-<canvas id="myChart" width="1000" height="900"></canvas>
+<div style="">
+  <div id="voltage" style="color: white;"></div>
+  <div id="percentage" style="color: white;"></div>
+</div>
 <script>
-var ctx = document.getElementById("myChart").getContext('2d');
 
-// Define the data 
-var data = [{
+const MQTT_HOST = "mqtt.eclipseprojects.io/mqtt";
+const MQTT_PORT = 9001;
 
-            }]; // Add data values to array
-// End Defining data
-var options = {
-    responsive: false, // Instruct chart js to respond nicely.
-    maintainAspectRatio: false, // Add to prevent default behaviour of full-width/height 
-};
+// Create a client instance
+client = new Paho.MQTT.Client(MQTT_HOST, MQTT_PORT, "webapp");
 
-// End Defining data
-var myChart = new Chart(ctx, {
-    type: 'scatter',
-    data: {
-        datasets: [{
-                label: 'Population', // Name the series
-                data: data, // Specify the data values array
-          borderColor: '#2196f3', // Add custom color border            
-          backgroundColor: '#2196f3', // Add custom color background (Points and Fill)
-            }]
-    },
-    options: options
-});
+// set callback handlers
+client.onConnectionLost = onConnectionLost;
+client.onMessageArrived = onMessageArrived;
+
+// connect the client
+client.connect({onSuccess:onConnect});
+
+
+// called when the client connects
+function onConnect() {
+  // Once a connection has been made, make a subscription and send a message.
+  console.log("onConnect");
+  client.subscribe("wrist/batt/sensors");
+
+  window.setInterval(function() {
+      const message = new Paho.MQTT.Message("");
+      message.destinationName = "wrist/batt/ask";
+      client.send(message);
+  }, 1000);
+}
+
+// called when the client loses its connection
+function onConnectionLost(responseObject) {
+  if (responseObject.errorCode !== 0) {
+    console.log("onConnectionLost:"+responseObject.errorMessage);
+  }
+}
+
+// called when a message arrives
+function onMessageArrived(message) {
+    var payload = message.payloadString;
+    var [timestamp, voltage, percentage] = payload.split(",");
+    document.getElementById("voltage").innerHTML = voltage + " V";
+    document.getElementById("percentage").innerHTML = percentage + " %";
+    // console.log(voltage, percentage);
+}
 
 </script>
-
 
 {% endblock %}

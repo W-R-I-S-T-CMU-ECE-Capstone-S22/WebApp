@@ -2,8 +2,8 @@
 
 <html lang="en" xml:lang="en">
 <head>
-    
-    <link rel="stylesheet" type="text/css" href="{% static 'main/style/main.css' %}">
+
+    <link rel="stylesheet" type="text/css" href="/static/main/style/main.css">
     <title>W.R.I.S.T</title>
     {% load static %}
     <meta charset="utf-8">
@@ -25,12 +25,12 @@
                         <td class="error">
                             {% for error in field.errors %} {{error}} {% endfor %}
                         </td>
-                    </table>      
-                    <button id="id_register_button" type="submit">Register</button>   
+                    </table>
+                    <button id="id_register_button" type="submit">Register</button>
                 </form>
             </div>
-            <a id="id_login_link" href="/">Login</a> 
-        </div> 
+            <a id="id_login_link" href="/">Login</a>
+        </div>
     </div>
 </body>
 

@@ -6,7 +6,7 @@ input{
 
 label{
     display:inline-block;
-    width: 140px; 
+    width: 140px;
     text-align: left;
 }
 
@@ -20,7 +20,7 @@ body,html {
     padding: 0;
     width: 100vw;
     height: 100vh;
-    background-color: #F7FFF7;
+    background-color: black;
 }
 
 ul{
@@ -30,7 +30,7 @@ ul{
 
 /* CLASS DEFINITIONS */
 .card{
-    width: 410px; 
+    width: 410px;
     padding: 10px 20px;
     height: fit-content;
     background-color: white;
@@ -48,7 +48,7 @@ img.class_icon_image {
     filter: grayscale(100%);
     transition: all 0.5s ease;
   }
- 
+
 img.class_icon_image:hover {
 -webkit-filter: grayscale(0%);
 -moz-filter: grayscale(0%);
@@ -106,17 +106,17 @@ img.selected_icon{
 }
 /* UNITY FUNCTIONS */
 #unity-container{
-    left: 800px!important; 
+    left: 800px!important;
 }
 #myChart {
     position: absolute;
     left: 1500px;
-    top: 20%; 
+    top: 20%;
 }
 /* BASE.HTML */
 #id_header_container{
-    width: 100vw; 
-    height: 100px; 
+    width: 100vw;
+    height: 100px;
 }
 /* LOGIN CSS */
 #id_login_container{
@@ -140,10 +140,10 @@ img.selected_icon{
 
 #login{
     display: inline-block;
-    margin-right: auto; 
-    margin-left: auto; 
+    margin-right: auto;
+    margin-left: auto;
     margin-top: auto;
-    margin-bottom: auto; 
+    margin-bottom: auto;
     height: fit-content;
     padding: 30px 70px;
     border: dotted;
@@ -159,13 +159,13 @@ img.selected_icon{
     padding-left: 10px;
     padding-right: 10px;
     padding-top: 5px;
-    padding-bottom: 5px; 
-    border-radius: 5px; 
+    padding-bottom: 5px;
+    border-radius: 5px;
     margin-top: 2px;
 }
 
 #id_name_of_page{
-    font-size: 30px; 
+    font-size: 30px;
     font-weight: bold;
 }
 #id_username{
@@ -175,7 +175,7 @@ img.selected_icon{
     padding: 5px 10px;
 }
 #id_register_link{
-    width: fit-content; 
+    width: fit-content;
     height: fit-content;
     position: absolute;
     margin-top: 243px;
@@ -203,10 +203,10 @@ img.selected_icon{
 
 #id_register{
     display: inline-block;
-    margin-right: auto; 
-    margin-left: auto; 
+    margin-right: auto;
+    margin-left: auto;
     margin-top: auto;
-    margin-bottom: auto; 
+    margin-bottom: auto;
     height: fit-content;
     padding: 30px 70px;
     border: dotted;
@@ -222,13 +222,13 @@ img.selected_icon{
     padding-left: 10px;
     padding-right: 10px;
     padding-top: 5px;
-    padding-bottom: 5px; 
-    border-radius: 5px; 
+    padding-bottom: 5px;
+    border-radius: 5px;
     margin-top: 2px;
 }
 
 #id_login_link{
-    width: fit-content; 
+    width: fit-content;
     height: fit-content;
     position: absolute;
     margin-top: 464px;
@@ -236,90 +236,97 @@ img.selected_icon{
 
 /* HOME PAGE */
 #id_left_sidebar_container{
-    height: 95vh; 
+    height: 95vh;
     width: 200px;
-    background-color: #e85a4f; 
+    background-color: #e85a4f;
     display: inline-block;
     margin-top: 20px;
     /* vertical-align: top; */
     margin-top: 20px;
-    margin-left: auto; 
-    margin-right: auto; 
-    position: relative; 
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
     border-radius: 20px;
     border-width: 2px;
     overflow: hidden;
 }
 #id_home_title{
-    font-size: 30px; 
-    margin-left: auto; 
+    font-size: 30px;
+    margin-left: auto;
     margin-right: auto;
-    width: fit-content; 
-    height: fit-content; 
+    width: fit-content;
+    height: fit-content;
 }
 #id_home_subtitle{
-    font-size: 15px; 
-    margin-left: auto; 
+    font-size: 15px;
+    margin-left: auto;
     margin-right: auto;
-    width: fit-content; 
+    width: fit-content;
     height: fit-content;
 }
 
 #id_home_container{
-    margin-left: auto; 
+    margin-left: auto;
     margin-right: auto;
     width: fit-content;
-    height: fit-content; 
+    height: fit-content;
     padding: 20px 20px;
     border-radius: 50px;
 }
 
 #id_wearable_status_container{
-    margin-left: auto; 
+    margin-left: auto;
     margin-right: auto;
     width: fit-content;
-    height: fit-content; 
+    height: fit-content;
     padding: 20px 20px;
     margin-top: 30px;
     border-radius: 50px;
-    width: fit-content; 
-    height: fit-content; 
+    width: fit-content;
+    height: fit-content;
 }
 
 #id_model_container{
-    width: fit-content; 
+    width: fit-content;
     height: fit-content;
     display:inline-block;
     vertical-align: top;
-    margin-left: 100px; 
+    margin-left: 100px;
     margin-top: 20px;
 }
 
 #id_unity_button_container{
-    margin-left: auto; 
+    margin-left: auto;
     margin-right: auto;
-    padding: 20px 20px; 
+    padding: 20px 20px;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 30px; 
+    margin-top: 30px;
     border-radius: 50px;
-    width: fit-content; 
-    height: fit-content; 
+    width: fit-content;
+    height: fit-content;
 
 }
 
-#test{
-    display: inline-block; 
+#left-container{
+    display: inline-block;
     width: fit-content;
-    padding: 10px 20px; 
-    height: 100vh; 
+    padding: 10px 20px;
+    height: 100vh;
+    text-align: center;
+}
+
+#right-container{
+    display: inline-block;
+    width: fit-content;
+    height: 100vh;
     text-align: center;
 }
 
 #id_title_container{
-    width: fit-content; 
-    height: fit-content; 
-    padding: 20px 0px; 
+    width: fit-content;
+    height: fit-content;
+    padding: 20px 0px;
 }
 
