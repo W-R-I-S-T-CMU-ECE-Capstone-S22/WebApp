@@ -73,7 +73,7 @@ function onMessageArrived(message) {
     var chart_data = myChart.data.datasets[0].data
 
     // parsing data from the mqtt data and making appropriate calls to unity functions 
-    console.log(payload)
+    // console.log(payload)
     if (payload.x_coord.length != 0) {
       // for visualization:
 
@@ -82,11 +82,11 @@ function onMessageArrived(message) {
       }
       chart_data.push({x:parseFloat(payload.y_coord[0]), y:parseFloat(payload.x_coord[0])});
       myChart.update();
-      console.log(chart_data)
+      // console.log(chart_data)
       var data = `gesture:${payload["gesture"]},x_coord:${payload.x_coord[0]},y_coord:${payload.y_coord[0]},timestamp:${payload.timestamp}`
       // console.log(data);
       if (payload.gesture == "two") {
-        console.log("two called")
+        // console.log("two called")
         var data = `gesture:pinch,x_coord:${payload.x_coord[0]},y_coord:${payload.y_coord[0]},timestamp:${payload.timestamp}`
         unity_rotate(data);
 
@@ -100,7 +100,7 @@ function onMessageArrived(message) {
         chart_data = []
         myChart.update();
         var data = `gesture:${payload["gesture"]}`
-        console.log("none");
+        // console.log("none");
         unity_rotate(data);
       }
     }
