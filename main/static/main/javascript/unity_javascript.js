@@ -120,6 +120,13 @@ function unity_zoom_in() {
   }
 }
 
+function ChangeModel() {
+  if (unity_instance != null) {
+    console.log("Changing model");
+    unity_instance.SendMessage('ExampleModels', 'SwitchAvatar')
+  }
+}
+
 /******* UNITY RENDER BUILD *******/
 var container = document.querySelector("#unity-container");
 var canvas = document.querySelector("#unity-canvas");

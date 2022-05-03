@@ -22,4 +22,5 @@ urlpatterns = [
     path('home', views.home_action, name='home'),
     path('battery', views.battery_action, name='battery'),
     path('unity', views.unity_action, name='unity'),
+    path('visualization', views.viz_action, name="viz"),
 ]

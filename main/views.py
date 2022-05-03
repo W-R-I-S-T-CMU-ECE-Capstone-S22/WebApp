@@ -9,7 +9,7 @@ from django.utils import timezone, dateparse
 from django.http import HttpResponse, Http404
 from django.core import serializers
 import json 
-
+from datetime import datetime 
 # Create your views here.
 def home_action(request):
     if request.method == 'GET':
@@ -82,3 +82,14 @@ def unity_action(request):
 
 def battery_action(request):
     return render(request, 'battery.html', {"page": "battery"})
+
+def viz_action(request):
+    myDate = datetime.now()
+
+    return render(request, 'visualization.html', {
+        'myDate': myDate,
+        'opacity1': 1,
+        'opacity2': 1,
+        'opacity3': 1,
+    })
+    
