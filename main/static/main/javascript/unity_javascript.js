@@ -40,7 +40,7 @@ var myChart = new Chart(ctx, {
 // MQTT protocol to receive data
 console.log('Setup...');
 
-const MQTT_HOST = "172.26.52.57";
+const MQTT_HOST = "mqtt.eclipseprojects.io/mqtt";
 const MQTT_PORT = 9001;
 
 // Create a client instance
@@ -115,7 +115,7 @@ function send_data_to_unity(data) {
     if (active_model == 0) {
       name_of_model = "molecule"
     } else if (active_model == 1) {
-      name_of_model = "Audi R8"
+      name_of_model = "Car_house"
     } else if (active_model == 2) {
       name_of_model = "chicken-rig"
     }
