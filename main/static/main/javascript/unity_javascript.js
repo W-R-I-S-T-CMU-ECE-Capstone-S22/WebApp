@@ -5,6 +5,8 @@ var data_chart = [{
 
 var ctx = document.getElementById("myChart").getContext('2d');
 
+var active_model = 0; 
+
 // End Defining data
 var options = {
     responsive: false, // Instruct chart js to respond nicely.
@@ -38,7 +40,7 @@ var myChart = new Chart(ctx, {
 // MQTT protocol to receive data
 console.log('Setup...');
 
-const MQTT_HOST = "mqtt.eclipseprojects.io/mqtt";
+const MQTT_HOST = "172.26.52.57";
 const MQTT_PORT = 9001;
 
 // Create a client instance
@@ -88,11 +90,11 @@ function onMessageArrived(message) {
       if (payload.gesture == "two") {
         // console.log("two called")
         var data = `gesture:pinch,x_coord:${payload.x_coord[0]},y_coord:${payload.y_coord[0]},timestamp:${payload.timestamp}`
-        unity_rotate(data);
+        send_data_to_unity(data);
 
       } else if (payload.gesture == "swipe") {
         if (parseFloat(payload.x_coord[0]) > 0) {
-          unity_rotate(data);
+          send_data_to_unity(data);
         }
       }
     } else {
@@ -101,29 +103,31 @@ function onMessageArrived(message) {
         myChart.update();
         var data = `gesture:${payload["gesture"]}`
         // console.log("none");
-        unity_rotate(data);
+        send_data_to_unity(data);
       }
     }
 }
 
 /***** UNITY FUNCTIONS (communication calls to Unity functions from MQTT protocol data) ******/
-function unity_rotate(data) {
+function send_data_to_unity(data) {
   if (unity_instance != null) {
-    unity_instance.SendMessage('chicken-rig', 'ProcessData', data);
-  }
-}
-
-function unity_zoom_in() {
-  if (unity_instance != null) {
-    console.log("Unity zoom in called");
-    unity_instance.SendMessage('chicken-rig', "ZoomInObject");
+    var name_of_model = "chicken-rig"
+    if (active_model == 0) {
+      name_of_model = "molecule"
+    } else if (active_model == 1) {
+      name_of_model = "Audi R8"
+    } else if (active_model == 2) {
+      name_of_model = "chicken-rig"
+    }
+    unity_instance.SendMessage(name_of_model, 'ProcessData', data);
   }
 }
 
 function ChangeModel() {
   if (unity_instance != null) {
     console.log("Changing model");
-    unity_instance.SendMessage('ExampleModels', 'SwitchAvatar')
+    unity_instance.SendMessage('ExampleModels', 'SwitchAvatar');
+    active_model = (active_model + 1) % 3;
   }
 }
 
