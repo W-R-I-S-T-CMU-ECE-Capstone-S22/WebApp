@@ -188,8 +188,8 @@ function onMessageArrived(message) {
   else if (message.destinationName == BATT_TOPIC) {
     console.log("message arrived in battery topic");
     var payload = message.payloadString.split(",");
-    var voltage = payload[1].toPrecision(2);
-    var battery = payload[2].toPrecision(2);
+    var voltage = parseFloat(payload[1]).toPrecision(2);
+    var battery = parseFloat(payload[2]).toPrecision(2);
 
     document.getElementById('volt').innerText = voltage + " V";
     document.getElementById('batt').innerText = battery + " %";
