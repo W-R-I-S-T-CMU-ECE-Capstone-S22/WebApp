@@ -9,17 +9,97 @@
 {% endblock %}
 
 {% block content %}
-<div style="">
-  <div id="voltage" style="color: white;"></div>
-  <div id="percentage" style="color: white;"></div>
+
+<div id="id_battery_left_container">
+
+  <div id="id_viz_container">
+  <div class="wrapper">
+      <div id="battery_text_container">Tony Status</div>
+  </div>
+  <br>
+
+  <div class="wrapper">
+      <span class="sensor"></span>
+      <span id="obj1" class="object"></span>
+  </div>
+  <br>
+  <br>
+
+  <div class="wrapper">
+      <span class="sensor"></span>
+      <span id="obj2" class="object"></span>
+  </div>
+  <br>
+  <br>
+
+  <div class="wrapper">
+      <span class="sensor"></span>
+      <span id="obj3" class="object"></span>
+  </div>
+  <br>
+  <br>
+
+  <div class="wrapper">
+      <span class="sensor"></span>
+      <span id="obj4" class="object"></span>
+  </div>
+  <br>
+  <br>
+
+  <div class="wrapper">
+      <span class="sensor"></span>
+      <span id="obj5" class="object"></span>
+  </div>
+  <br>
+  <br>
+  <div class="wrapper">
+      <span class="sensor"></span>
+      <span id="obj6" class="object"></span>
+  </div>
+  <br>
+  <br>
+  <div class="wrapper">
+      <span class="sensor"></span>
+      <span id="obj7" class="object"></span>
+  </div>
+  <br>
+  <br>
+  <div class="wrapper">
+      <span class="sensor"></span>
+      <span id="obj8" class="object"></span>
+  </div>
+  <br>
+  <br>
+  <div class="wrapper">
+      <span class="sensor"></span>
+      <span id="obj9" class="object"></span>
+  </div>
+  <br>
+  <br>
+  <div class="wrapper">
+      <span class="sensor"></span>
+      <span id="obj10" class="object"></span>
+  </div>
+  </div>
+</div>
+<div id="middle_battery_container">
+  <div id="battery_text_container">Tony Visualized</div>
+  <span id="volt_container">Voltage: </span><span id="volt">Not Connected</span>
+  <br></br>
+  <span id="batt_container">Battery %: </span><span id="batt">Not Connected</span>
+
 </div>
 <script>
 
 const MQTT_HOST = "mqtt.eclipseprojects.io/mqtt";
 const MQTT_PORT = 9001;
 
+const DATA_TOPIC = "wrist/data/sensors";
+const BATT_TOPIC = "wrist/batt/sensors";
+const BATT_TOPIC_ASK = "wrist/batt/ask";
+
 // Create a client instance
-client = new Paho.MQTT.Client(MQTT_HOST, MQTT_PORT, "webapp");
+client = new Paho.MQTT.Client(MQTT_HOST, MQTT_PORT, "webapp_battery");
 
 // set callback handlers
 client.onConnectionLost = onConnectionLost;
@@ -33,11 +113,11 @@ client.connect({onSuccess:onConnect});
 function onConnect() {
   // Once a connection has been made, make a subscription and send a message.
   console.log("onConnect");
-  client.subscribe("wrist/batt/sensors");
-
+  client.subscribe(BATT_TOPIC);
+  client.subscribe(DATA_TOPIC);
   window.setInterval(function() {
       const message = new Paho.MQTT.Message("");
-      message.destinationName = "wrist/batt/ask";
+      message.destinationName = BATT_TOPIC_ASK;
       client.send(message);
   }, 1000);
 }
@@ -51,11 +131,49 @@ function onConnectionLost(responseObject) {
 
 // called when a message arrives
 function onMessageArrived(message) {
-    var payload = message.payloadString;
-    var [timestamp, voltage, percentage] = payload.split(",");
-    document.getElementById("voltage").innerHTML = voltage + " V";
-    document.getElementById("percentage").innerHTML = percentage + " %";
-    // console.log(voltage, percentage);
+  
+  if (message.destinationName == DATA_TOPIC) {
+    console.log("message arrived in data topic");
+
+    var payload = message.payloadBytes;
+    var data = new Uint8Array(payload);
+    if (data.length < 10) return;
+    
+    var sensor10 = data[data.length-10] * 2;
+    var sensor9 = data[data.length-9] * 2;
+    var sensor8 = data[data.length-8] * 2;
+    var sensor7 = data[data.length-7] * 2;
+    var sensor6 = data[data.length-6] * 2;
+    var sensor5 = data[data.length-5] * 2;
+    var sensor4 = data[data.length-4] * 2;
+    var sensor3 = data[data.length-3] * 2;
+    var sensor2 = data[data.length-2] * 2;
+    var sensor1 = data[data.length-1] * 2;
+    
+    
+    document.getElementById('obj1').style.marginLeft = (sensor1).toString()+"px";
+    document.getElementById('obj2').style.marginLeft = (sensor2).toString()+"px";
+    document.getElementById('obj3').style.marginLeft = (sensor3).toString()+"px";
+    document.getElementById('obj4').style.marginLeft = (sensor4).toString()+"px";
+    document.getElementById('obj5').style.marginLeft = (sensor5).toString()+"px";
+    document.getElementById('obj6').style.marginLeft = (sensor6).toString()+"px";
+    document.getElementById('obj7').style.marginLeft = (sensor7).toString()+"px";
+    document.getElementById('obj8').style.marginLeft = (sensor8).toString()+"px";
+    document.getElementById('obj9').style.marginLeft = (sensor9).toString()+"px";
+    document.getElementById('obj10').style.marginLeft = (sensor10).toString()+"px";
+
+    // parsing data from the mqtt data and making appropriate calls to unity functions 
+    console.log(payload)
+  }
+  else if (message.destinationName == BATT_TOPIC) {
+    console.log("message arrived in battery topic");
+    var payload = message.payloadString.split(",");
+    var voltage = payload[1];
+    var battery = payload[2];
+
+    document.getElementById('volt').innerText = voltage + " V";
+    document.getElementById('batt').innerText = battery + " %";
+  }
 }
 
 </script>
