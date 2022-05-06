@@ -80,6 +80,9 @@
       <span class="sensor"></span>
       <span id="obj1" class="object"></span>
   </div>
+  <br>
+  <br>
+  <span class="gesture">Gesture Detected: </span><span class="gesture" id="gesture_value">None</span>
   </div>
 </div>
 <div id="middle_battery_container">
@@ -94,6 +97,7 @@
 const MQTT_HOST = "mqtt.eclipseprojects.io/mqtt";
 const MQTT_PORT = 9001;
 
+const GEST_TOPIC = "wrist/data/gestures";
 const DATA_TOPIC = "wrist/data/sensors";
 const BATT_TOPIC = "wrist/batt/sensors";
 const BATT_TOPIC_ASK = "wrist/batt/ask";
@@ -180,6 +184,22 @@ function onMessageArrived(message) {
 
     document.getElementById('volt').innerText = voltage + " V";
     document.getElementById('batt').innerText = battery + " %";
+  } else if (message.destinationName == GEST_TOPIC) {
+    var payload = message.payloadString;
+    payload = JSON.parse(payload);
+    // parsing data from the mqtt data and making appropriate calls to unity functions 
+    console.log(payload)
+    if (payload.x_coord.length != 0) {
+      // for visualization:
+      var data = `gesture:${payload["gesture"]},x_coord:${payload.x_coord[0]},y_coord:${payload.y_coord[0]},timestamp:${payload.timestamp}`
+      // console.log(data);
+      if (payload.gesture == "two") {
+        document.getElementById('gesture_value').innerText = "Zoom Detected";
+      
+      } else if (payload.gesture == "swipe") {
+        document.getElementById('gesture_value').innerText = "Swipe Detected";
+      }
+    } 
   }
 }
 

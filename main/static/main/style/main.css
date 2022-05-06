@@ -392,7 +392,10 @@ img.selected_icon{
     display: inline-block;
 }
 
-
+.gesture { 
+    font-family: "TriakisFont-Regular";
+    font-size: 20px; 
+}
 #id_viz_container { 
     width: 590px; 
     height: fit-content; 
