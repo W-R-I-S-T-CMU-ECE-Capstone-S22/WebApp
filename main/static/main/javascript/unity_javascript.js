@@ -19,8 +19,15 @@ client.onConnectionLost = onConnectionLost;
 client.onMessageArrived = onMessageArrived;
 
 // connect the client
-client.connect({onSuccess:onConnect});
-
+// client.connect({onSuccess:onConnect});
+client.connect(
+  {
+      cleanSession : false, 
+      onSuccess : onConnect, 
+      onFailure : onConnectionLost, 
+      keepAliveInterval: 30, 
+      reconnect : true,         // Enable automatic reconnect
+  });
 
 // called when the client connects
 function onConnect() {
