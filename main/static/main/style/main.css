@@ -372,7 +372,11 @@ img.selected_icon{
 }
 
 /* BATTERY */
+.wrapper{ 
+    float: right; 
+}
 .sensor {
+    float: right; 
     height: 25px;
     width: 25px;
     background-color: #ff0;

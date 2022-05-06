@@ -13,45 +13,39 @@
 <div id="id_battery_left_container">
 
   <div id="id_viz_container">
-  <div class="wrapper">
-      <div id="battery_text_container">Tony Status</div>
-  </div>
+  
+  <div id="battery_text_container">Tony Status</div>
+  
   <br>
 
   <div class="wrapper">
       <span class="sensor"></span>
-      <span id="obj1" class="object"></span>
-  </div>
-  <br>
-  <br>
-
-  <div class="wrapper">
-      <span class="sensor"></span>
-      <span id="obj2" class="object"></span>
+      <span id="obj10" class="object"></span>
   </div>
   <br>
   <br>
 
   <div class="wrapper">
       <span class="sensor"></span>
-      <span id="obj3" class="object"></span>
+      <span id="obj9" class="object"></span>
   </div>
   <br>
   <br>
 
   <div class="wrapper">
       <span class="sensor"></span>
-      <span id="obj4" class="object"></span>
+      <span id="obj8" class="object"></span>
   </div>
   <br>
   <br>
 
   <div class="wrapper">
       <span class="sensor"></span>
-      <span id="obj5" class="object"></span>
+      <span id="obj7" class="object"></span>
   </div>
   <br>
   <br>
+
   <div class="wrapper">
       <span class="sensor"></span>
       <span id="obj6" class="object"></span>
@@ -60,25 +54,31 @@
   <br>
   <div class="wrapper">
       <span class="sensor"></span>
-      <span id="obj7" class="object"></span>
+      <span id="obj5" class="object"></span>
   </div>
   <br>
   <br>
   <div class="wrapper">
       <span class="sensor"></span>
-      <span id="obj8" class="object"></span>
+      <span id="obj4" class="object"></span>
   </div>
   <br>
   <br>
   <div class="wrapper">
       <span class="sensor"></span>
-      <span id="obj9" class="object"></span>
+      <span id="obj3" class="object"></span>
   </div>
   <br>
   <br>
   <div class="wrapper">
       <span class="sensor"></span>
-      <span id="obj10" class="object"></span>
+      <span id="obj2" class="object"></span>
+  </div>
+  <br>
+  <br>
+  <div class="wrapper">
+      <span class="sensor"></span>
+      <span id="obj1" class="object"></span>
   </div>
   </div>
 </div>
@@ -158,16 +158,16 @@ function onMessageArrived(message) {
     var sensor1 = data[data.length-1] * 2;
     
     
-    document.getElementById('obj1').style.marginLeft = (sensor1).toString()+"px";
-    document.getElementById('obj2').style.marginLeft = (sensor2).toString()+"px";
-    document.getElementById('obj3').style.marginLeft = (sensor3).toString()+"px";
-    document.getElementById('obj4').style.marginLeft = (sensor4).toString()+"px";
-    document.getElementById('obj5').style.marginLeft = (sensor5).toString()+"px";
-    document.getElementById('obj6').style.marginLeft = (sensor6).toString()+"px";
-    document.getElementById('obj7').style.marginLeft = (sensor7).toString()+"px";
-    document.getElementById('obj8').style.marginLeft = (sensor8).toString()+"px";
-    document.getElementById('obj9').style.marginLeft = (sensor9).toString()+"px";
-    document.getElementById('obj10').style.marginLeft = (sensor10).toString()+"px";
+    document.getElementById('obj1').style.marginRight = (sensor1).toString()+"px";
+    document.getElementById('obj2').style.marginRight = (sensor2).toString()+"px";
+    document.getElementById('obj3').style.marginRight = (sensor3).toString()+"px";
+    document.getElementById('obj4').style.marginRight = (sensor4).toString()+"px";
+    document.getElementById('obj5').style.marginRight = (sensor5).toString()+"px";
+    document.getElementById('obj6').style.marginRight = (sensor6).toString()+"px";
+    document.getElementById('obj7').style.marginRight = (sensor7).toString()+"px";
+    document.getElementById('obj8').style.marginRight = (sensor8).toString()+"px";
+    document.getElementById('obj9').style.marginRight = (sensor9).toString()+"px";
+    document.getElementById('obj10').style.marginRight = (sensor10).toString()+"px";
 
     // parsing data from the mqtt data and making appropriate calls to unity functions 
     console.log(payload)
