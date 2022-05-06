@@ -4,7 +4,7 @@
 {% block header_content %}
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.0.1/mqttws31.js"></script>
+    <script src="https://unpkg.com/paho-mqtt@1.1.0/paho-mqtt.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
 {% endblock %}
 
@@ -100,7 +100,7 @@ const BATT_TOPIC_ASK = "wrist/batt/ask";
 
 // Create a client instance
 
-client = new Paho.MQTT.Client(MQTT_HOST, MQTT_PORT, "webapp_battery" + Math.floor(Math.random()*1000000));
+client = new Paho.Client(MQTT_HOST, MQTT_PORT, "webapp_battery" + Math.floor(Math.random()*1000000));
 
 // set callback handlers
 client.onConnectionLost = onConnectionLost;
@@ -114,7 +114,6 @@ client.connect(
                 cleanSession : false, 
                 onSuccess : onConnect, 
                 onFailure : onConnectionLost, 
-                keepAliveInterval: 30, 
                 reconnect : true,         // Enable automatic reconnect
             });
 // called when the client connects

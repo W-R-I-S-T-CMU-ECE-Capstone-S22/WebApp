@@ -12,7 +12,7 @@ const BATT_TOPIC = "wrist/batt/sensors";
 const BATT_TOPIC_ASK = "wrist/batt/ask";
 
 // Create a client instance
-client = new Paho.MQTT.Client(MQTT_HOST, MQTT_PORT, "webapp" + Math.floor(Math.random()*1000000));
+client = new Paho.Client(MQTT_HOST, MQTT_PORT, "webapp" + Math.floor(Math.random()*1000000).toString());
 
 // set callback handlers
 client.onConnectionLost = onConnectionLost;
@@ -25,7 +25,6 @@ client.connect(
       cleanSession : false, 
       onSuccess : onConnect, 
       onFailure : onConnectionLost, 
-      keepAliveInterval: 30, 
       reconnect : true,         // Enable automatic reconnect
   });
 
