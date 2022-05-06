@@ -392,9 +392,15 @@ img.selected_icon{
     display: inline-block;
 }
 
-.gesture { 
+.text { 
     font-family: "TriakisFont-Regular";
     font-size: 20px; 
+}
+
+#mqtt_text_container {
+    font-family: "TriakisFont-Regular";
+    font-size: 30px; 
+    margin-bottom: 10px;
 }
 #id_viz_container { 
     width: 590px; 
@@ -438,13 +444,6 @@ img.selected_icon{
     display: flex;
     flex-direction: column;
     margin-left: 50px;
-    height: fit-content;
-    width: fit-content;
-    background-color: #fbaf33;
-    padding: 20px 50px;
-    border-radius: 30px;
-    margin-top: 50px; 
-    box-shadow: 10px 10px 8px #888888;
 }
 
 #battery_text_container{
@@ -456,4 +455,24 @@ img.selected_icon{
 #unity-canvas {
     width: 800px !important;
     height: 500px !important;
+}
+
+#battery_status_container{
+    height: fit-content;
+    width: 300px;
+    background-color: #fbaf33;
+    padding: 20px 50px;
+    border-radius: 30px;
+    margin-top: 50px; 
+    box-shadow: 10px 10px 8px #888888;
+}
+
+#mqtt_status_container{
+    height: fit-content;
+    width: 300px;
+    background-color: #fbaf33;
+    padding: 20px 50px;
+    border-radius: 20px;
+    margin-top: 50px; 
+    box-shadow: 10px 10px 8px #888888;
 }

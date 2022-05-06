@@ -14,7 +14,7 @@
 
   <div id="id_viz_container">
   
-  <div id="battery_text_container">Tony Status</div>
+  <div id="battery_text_container">Tony Visualized</div>
   
   <br>
 
@@ -82,15 +82,21 @@
   </div>
   <br>
   <br>
-  <span class="gesture">Gesture Detected: </span><span class="gesture" id="gesture_value">None</span>
+  <span class="text">Gesture Detected: </span><span class="text" id="gesture_value">None</span>
   </div>
 </div>
 <div id="middle_battery_container">
-  <div id="battery_text_container">Tony Visualized</div>
-  <span id="volt_container">Voltage: </span><span id="volt">Not Connected</span>
-  <br></br>
-  <span id="batt_container">Battery %: </span><span id="batt">Not Connected</span>
+  <div id="battery_status_container">
+    <div id="battery_text_container">Tony Status</div>
+    <span id="volt_container">Voltage: </span><span id="volt">Not Connected</span>
+    <br></br>
+    <span id="batt_container">Battery %: </span><span id="batt">Not Connected</span>
+  </div>
 
+  <div id="mqtt_status_container">
+    <div id="mqtt_text_container">Tony Connection</div>
+    <span class="text">MQTT status: </span><span class="text" id="mqtt_unity_status">Not Connected</span>
+  </div>
 </div>
 <script>
 
@@ -124,8 +130,10 @@ client.connect(
 function onConnect() {
   // Once a connection has been made, make a subscription and send a message.
   console.log("onConnect");
+  document.getElementById('mqtt_unity_status').innerText = "Connected";
   client.subscribe(BATT_TOPIC);
   client.subscribe(DATA_TOPIC);
+  client.subscribe(GEST_TOPIC);
   window.setInterval(function() {
       const message = new Paho.Message("");
       message.destinationName = BATT_TOPIC_ASK;
@@ -136,6 +144,7 @@ function onConnect() {
 // called when the client loses its connection
 function onConnectionLost(responseObject) {
   if (responseObject.errorCode !== 0) {
+    document.getElementById('mqtt_unity_status').innerText = "Disconnected";
     console.log("onConnectionLost:"+responseObject.errorMessage);
   }
 }
