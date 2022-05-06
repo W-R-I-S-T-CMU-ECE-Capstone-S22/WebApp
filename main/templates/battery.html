@@ -123,7 +123,7 @@ function onConnect() {
   client.subscribe(BATT_TOPIC);
   client.subscribe(DATA_TOPIC);
   window.setInterval(function() {
-      const message = new Paho.MQTT.Message("");
+      const message = new Paho.Message("");
       message.destinationName = BATT_TOPIC_ASK;
       client.send(message);
   }, 1000);
